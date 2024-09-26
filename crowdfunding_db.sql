@@ -35,7 +35,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Medical'),(2,'Education'),(3,'Social Impact'),(4,'Medical'),(5,'Education'),(6,'Social Impact');
+INSERT INTO `category` VALUES (1,'Medical'),(2,'Education'),(3,'Social Impact');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-26 20:09:36
+-- Dump completed on 2024-09-26 20:13:50
