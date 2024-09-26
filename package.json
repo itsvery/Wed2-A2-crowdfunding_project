@@ -1,0 +1,15 @@
+{
+  "name": "wed2-a2-crowdfunding_project",
+  "version": "1.0.0",
+  "description": "Demonstrate my learning from the first four modules of this unit by developing a simple dynamic website using client-side and server-side web development technologies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
