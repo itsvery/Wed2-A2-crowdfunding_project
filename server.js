@@ -61,3 +61,32 @@ app.get('/categories', (req, res) => {
       res.json(results);
     });
   });
+
+
+
+  // Search for active fundraisers by criteria(根据条件搜索活跃的筹款活动)
+app.get('/search', (req, res) => {
+    const { organizer, city, category } = req.query;
+    let query = `
+      SELECT f.*, c.NAME as CATEGORY_NAME
+      FROM FUNDRAISER f
+      JOIN CATEGORY c ON f.CATEGORY_ID = c.CATEGORY_ID
+      WHERE f.ACTIVE = TRUE
+    `;
+    const conditions = [];
+    if (organizer) conditions.push(`f.ORGANIZER LIKE '%${organizer}%'`);
+    if (city) conditions.push(`f.CITY LIKE '%${city}%'`);
+    if (category) conditions.push(`c.NAME LIKE '%${category}%'`);
+    if (conditions.length > 0) query += ' AND ' + conditions.join(' AND ');
+  
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.error('Query failed: ' + err.stack);
+        res.status(500).send('Server error');
+        return;
+      }
+      res.json(results);
+    });
+  });
+  
+  
