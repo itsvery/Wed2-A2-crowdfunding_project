@@ -89,4 +89,22 @@ app.get('/search', (req, res) => {
     });
   });
   
+  // Get fundraising event details by ID(根据 ID 获取筹款活动的详细信息)
+app.get('/fundraiser/:id', (req, res) => {
+    const { id } = req.params;
+    const query = `
+      SELECT f.*, c.NAME as CATEGORY_NAME
+      FROM FUNDRAISER f
+      JOIN CATEGORY c ON f.CATEGORY_ID = c.CATEGORY_ID
+      WHERE f.FUNDRAISER_ID = ?
+    `;
+    connection.query(query, [id], (err, results) => {
+      if (err) {
+        console.error('Query failed: ' + err.stack);
+        res.status(500).send('Server error');
+        return;
+      }
+      res.json(results[0]);
+    });
+  });
   
