@@ -40,8 +40,8 @@ app.get('/fundraisers', (req, res) => {
     `;
     connection.query(query, (err, results) => {
       if (err) {
-        console.error('Query Failed: ' + err.stack);
-        res.status(500).send('server error');
+        console.error('Query failed: ' + err.stack);
+        res.status(500).send('Server error');
         return;
       }
       res.json(results);
@@ -49,3 +49,15 @@ app.get('/fundraisers', (req, res) => {
 });
 
 
+// Get all categories(获取所有类别)
+app.get('/categories', (req, res) => {
+    const query = 'SELECT * FROM CATEGORY';
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.error('Query failed: ' + err.stack);
+        res.status(500).send('Server error');
+        return;
+      }
+      res.json(results);
+    });
+  });
