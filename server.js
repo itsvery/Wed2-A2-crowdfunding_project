@@ -29,3 +29,23 @@ connection.connect((err) => {
 app.listen(port, () => {
   console.log(`The server is running on http://localhost:${port}`);
 });
+
+// Get all active fundraisers(获取所有活跃的筹款活动)
+app.get('/fundraisers', (req, res) => {
+    const query = `
+      SELECT f.*, c.NAME as CATEGORY_NAME
+      FROM FUNDRAISER f
+      JOIN CATEGORY c ON f.CATEGORY_ID = c.CATEGORY_ID
+      WHERE f.ACTIVE = TRUE
+    `;
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.error('Query Failed: ' + err.stack);
+        res.status(500).send('server error');
+        return;
+      }
+      res.json(results);
+    });
+});
+
+
