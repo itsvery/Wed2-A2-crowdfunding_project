@@ -25,6 +25,9 @@ connection.connect((err) => {
   console.log('Successfully connected to the database, Connection ID: ' + connection.threadId);
 });
 
+// Provision of static documents(提供静态文件)
+app.use(express.static(path.join(__dirname, '../clientside/public')));
+
 // Start the server
 app.listen(port, () => {
   console.log(`The server is running on http://localhost:${port}`);
