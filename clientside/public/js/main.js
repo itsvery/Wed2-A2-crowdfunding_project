@@ -79,6 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Clear checkboxes function
+function clearCheckboxes() {
+  document.getElementById('organizer').value = '';
+  document.getElementById('city').value = '';
+  document.getElementById('category').selectedIndex = 0;
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
