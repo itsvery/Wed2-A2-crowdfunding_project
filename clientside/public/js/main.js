@@ -50,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const organizer = document.getElementById('organizer').value;
     const city = document.getElementById('city').value;
     const category = document.getElementById('category').value;
+    if (!organizer && !city && !category) {
+      alert('Please select at least one criteria.');
+      return;
+    }
     const query = `organizer=${organizer}&city=${city}&category=${category}`;
     fetch(`/search?${query}`)
       .then(response => response.json())
@@ -85,6 +89,7 @@ function clearCheckboxes() {
   document.getElementById('city').value = '';
   document.getElementById('category').selectedIndex = 0;
 }
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
